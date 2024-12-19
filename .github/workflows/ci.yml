@@ -1,0 +1,60 @@
+name: CI - Lint and Test
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - "feature/*"
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  # Backend job
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1"
+
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          composer install
+
+      # - name: Run backend linter (Pint)
+      #   run: cd backend && ./vendor/bin/pint
+
+      - name: Run backend tests (PHPUnit)
+        run: cd backend && ./vendor/bin/phpunit
+
+  # Frontend job
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm install
+
+      # - name: Run frontend linter (ESLint)
+      # run: cd frontend && npm run lint
+      # run: cd frontend
+
+      - name: Run frontend tests (Jest)
+        run: cd frontend && npm test

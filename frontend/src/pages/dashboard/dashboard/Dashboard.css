@@ -1,0 +1,44 @@
+@media screen and (max-width: 768px) {
+  .dashboard-card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.atm-card {
+  width: 250px;
+  height: 150px;
+  border-radius: 10px;
+  /* display: flex; */
+  /* justify-content: center;
+  align-items: center;
+  background-color: #fff;
+   */
+}
+.atm-card-normal {
+  background: var(--blue-gradient);
+}
+.atm-card.glassy {
+  position: absolute;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.1)
+  );
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 99;
+  transform: rotate(10deg);
+}
+.atm-card.glassy:hover {
+  transform: rotate(-360deg);
+}
+.label {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.value {
+  font-size: 48px;
+  font-weight: bold;
+}

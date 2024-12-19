@@ -1,0 +1,63 @@
+#root {
+  margin: 0 auto;
+  text-align: center;
+  --success: #41f1b6;
+  --danger: #f8483c;
+  --warning: #ffd816;
+  --black: rgb(60, 60, 60);
+  --dark-blue: #030134;
+  --blue: #045de9;
+  --gray: #eceff2;
+  --orange: #ff8304;
+  --blue-text: #190762;
+  --light: rgba(132, 139, 200, 0.18);
+  --box-shadow: 0 2rem 3rem var(--light);
+  --radius-25: 25px;
+  --orangeGradient: linear-gradient(to top, #ff1453, #ff9c2a) !important;
+  --blueGradient: linear-gradient(to right, #0985f9, #045de9) !important;
+  --darkBlueGradient: linear-gradient(
+    to top right,
+    #033f95,
+    #2f64ff
+  ) !important;
+}
+@property --border-angle {
+  inherits: false;
+  initial-value: 0deg;
+  syntax: '<angle>';
+}
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}

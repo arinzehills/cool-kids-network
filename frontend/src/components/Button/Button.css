@@ -1,0 +1,50 @@
+.btn-orange {
+  background: var(--orangeGradient);
+  /* box-shadow: 0 10px 30px 2px rgba(256, 156, 0, 0.6); */
+  color: white;
+}
+.btn-orange:hover {
+  border: 1px solid var(--darkOrange);
+  transition: all 0.3s ease-out;
+  background: white;
+  color: var(--dark-blue);
+}
+.btn-orange-outline {
+  border: 1px solid var(--orange);
+  transition: all 0.3s ease-out;
+  background: white;
+  color: var(--orange);
+}
+.btn-purple {
+  background: var(--purpleGradient);
+  box-shadow: 0 10px 30px 2px rgba(131, 8, 255, 0.2);
+  color: white;
+}
+.btn-purple:hover {
+  border: 1px solid var(--pink);
+  color: var(--dark-blue);
+  background: white;
+}
+.btn-purple-outline {
+  border: 1px solid var(--pink);
+  color: var(--pink);
+  background: white;
+}
+
+.btn-blue {
+  background: var(--blueGradient);
+  transition: all 0.3s ease-out;
+  color: white;
+}
+.btn-blue:hover {
+  border: 1px solid var(--blue);
+  transition: all 0.3s ease-out;
+  background: white;
+  color: var(--blue);
+}
+.btn-outline {
+  border: 1.5px solid var(--myGray);
+  background: white;
+  color: var(--myGray);
+  box-shadow: none;
+}

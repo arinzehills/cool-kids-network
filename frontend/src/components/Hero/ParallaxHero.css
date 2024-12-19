@@ -1,0 +1,30 @@
+/* ParallaxHero.css */
+.parallax-hero {
+  height: 100vh;
+  background: url("images/hero-dark-edit.jpg") center/contain no-repeat;
+  /* background-color: black !important; */
+  /* background: url("images/herowoman6.png") center/cover no-repeat; */
+  /* background: url("/images/ewe.jpeg") center/contain; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.hero-content {
+  z-index: 1; /* Ensure content is above the background */
+}
+@media screen and (min-width: 763px) {
+  .parallax-hero {
+    background: url("images/hero-dark-edit.jpg") center/contain no-repeat;
+  }
+}
+@media screen and (max-width: 761px) {
+  .parallax-hero {
+    background: url("/images/herowoman.jpeg");
+    object-fit: contain;
+    /* background-position: center; */
+    /* background-repeat: no-repeat; */
+  }
+}
