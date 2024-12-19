@@ -11,15 +11,17 @@ use Mockery;
 use Mockery\LegacyMockInterface;
 use Mockery\MockInterface;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthControllerTest extends TestCase
 {
+
     /**
      * @var UserService&LegacyMockInterface&MockInterface
      */
     protected $userServiceMock;
-
+    use RefreshDatabase;
     protected $authController;
 
     protected function setUp(): void
