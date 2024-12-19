@@ -1,5 +1,6 @@
-# **Explanation.md**
+# **Read.md**
 
+ <img src="./screenshots/banner.png" alt="Login Screen" height="300">
 ## **Problem Statement**
 
 The task is to implement a proof-of-concept app called **“Cool Kids Network”**, which involves the following features:
@@ -21,10 +22,12 @@ The task is to implement a proof-of-concept app called **“Cool Kids Network”
 
 ## **Features in the app **
 
-- Admin Dashboard (only maintainers can see this, they can also assign roles)
 - Users Dashboard
 - Profile Page to update profile
 - Users page to list users, only users with admins, cooler kid , or coolest kid role can see this link
+
+- Admin Dashboard (only maintainers can see this, they can also assign roles)
+  <img src="./screenshots/assignrole.png" alt="Login Screen" height="300">
 
 ## Tech Stack
 
@@ -68,10 +71,6 @@ Laravel >= 9.x
     php artisan migrate
    ```
 
-   ```bash
-   php artisan test
-   ```
-
    To run Test
 
    ```bash
@@ -92,8 +91,38 @@ Install the dependencies:
 npm install
 ```
 
+Run Test:
+
+```bash
+npm test
+```
+
 Start the React development server:
 
 ```bash
-npm start
+npm run dev
 ```
+
+## API Documentation
+
+The API endpoints for the application are structured as follows:
+
+POST /api/register
+Registers a new user.
+Requires the email field.
+Returns a JWT token on successful registration.
+POST /api/login
+Authenticates a user and returns a JWT token.
+Requires email and password fields.
+GET /api/users
+Fetches all users’ data (admin only).
+Returns a list of users with their roles, emails, and character data.
+GET /api/user
+Fetches the current user's character data.
+Only accessible by the logged-in user.
+PUT /api/user
+updateProfile current user's character data.
+Only accessible by the logged-in user.
+POST /api/admin/assign-role
+Admin can update the role of a user.
+Requires a valid JWT token and the role field (Cool Kid, Cooler Kid, Coolest Kid).
