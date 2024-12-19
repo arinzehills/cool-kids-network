@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-
 use Illuminate\Support\Facades\File;
 
 class MakeRepositoryService extends Command
@@ -14,8 +13,8 @@ class MakeRepositoryService extends Command
      * @var string
      */
     protected $signature = 'make:repository-service {name}';
-    protected $description = 'Create a repository and service for a given model';
 
+    protected $description = 'Create a repository and service for a given model';
 
     /**
      * Create a new command instance.
@@ -43,6 +42,7 @@ class MakeRepositoryService extends Command
         $this->createService($name);
         $this->info("Repository and Service created successfully for {$name}");
     }
+
     protected function createRepository($name)
     {
         $repositoryPath = app_path("Repositories/{$name}Repository.php");
@@ -50,6 +50,7 @@ class MakeRepositoryService extends Command
         // Check if the repository file already exists
         if (File::exists($repositoryPath)) {
             $this->warn("Repository {$name}Repository already exists.");
+
             return;
         }
 
@@ -91,6 +92,7 @@ EOT;
         // Check if the service file already exists
         if (File::exists($servicePath)) {
             $this->warn("Service {$name}Service already exists.");
+
             return;
         }
 

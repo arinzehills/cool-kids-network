@@ -13,11 +13,11 @@ class UserRepository
         $this->User = $User;
     }
 
-
     public function getAllUsers()
     {
         return $this->User->all();
     }
+
     public function createUser(array $data)
     {
         return User::create($data);
@@ -27,6 +27,7 @@ class UserRepository
     {
         return User::where('email', $email)->first();
     }
+
     public function getUsersWithSpecificFields($fields)
     {
         return User::select($fields)->get();
@@ -36,11 +37,14 @@ class UserRepository
     {
         $user->role = $role;
         $user->save();
+
         return $user;
     }
+
     public function updateUserProfile(User $user, array $data)
     {
         $user->update($data);
+
         return $user->fresh();
     }
 }

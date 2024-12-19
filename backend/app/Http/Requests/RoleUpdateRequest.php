@@ -26,12 +26,12 @@ class RoleUpdateRequest extends FormRequest
     {
         return [
             'email' => 'required|email|exists:users,email',
-            'role' => 'required|in:' . implode(',', [
+            'role' => 'required|in:'.implode(',', [
                 User::ROLE_COOL_KID,
                 User::ROLE_COOLER_KID,
                 User::ROLE_COOLEST_KID,
                 User::ROLE_MAINTAINER,
-            ])
+            ]),
         ];
     }
 }

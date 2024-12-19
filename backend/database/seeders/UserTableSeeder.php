@@ -18,7 +18,7 @@ class UserTableSeeder extends Seeder
         User::create([
             'first_name' => 'Admin',
             'last_name' => 'aUser',
-            'country' =>  'Nigeria',
+            'country' => 'Nigeria',
             'email' => 'admin@example.com',
             'password' => Hash::make('password'),  // Replace with a secure password
             'role' => User::ROLE_MAINTAINER,       // Using the constant from the User model
@@ -29,7 +29,7 @@ class UserTableSeeder extends Seeder
             'first_name' => 'Cool Kid User',
             'last_name' => 'Cool Kid User',
             'email' => 'coolkid@example.com',
-            'country' =>  'Nigeria',
+            'country' => 'Nigeria',
             'password' => Hash::make('password'),
             'role' => User::ROLE_COOL_KID,  // Using the constant from the User model
         ]);
@@ -38,7 +38,7 @@ class UserTableSeeder extends Seeder
             'first_name' => 'Cooler Kid User',
             'last_name' => 'Cooler Kid User',
             'email' => 'coolerkid@example.com',
-            'country' =>  'Nigeria',
+            'country' => 'Nigeria',
             'password' => Hash::make('password'),
             'role' => User::ROLE_COOLER_KID,  // Using the constant from the User model
         ]);
@@ -47,7 +47,7 @@ class UserTableSeeder extends Seeder
             'first_name' => 'Coolest Kid User',
             'last_name' => 'Cooler Kid User',
             'email' => 'coolestkid@example.com',
-            'country' =>  'Nigeria',
+            'country' => 'Nigeria',
             'password' => Hash::make('password'),
             'role' => User::ROLE_COOLEST_KID,  // Using the constant from the User model
         ]);

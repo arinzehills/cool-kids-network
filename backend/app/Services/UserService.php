@@ -14,7 +14,6 @@ class UserService
         $this->userRepository = $userRepository;
     }
 
-
     public function getAll()
     {
         return $this->userRepository->getAllUsers();
@@ -32,6 +31,7 @@ class UserService
         //     throw new \Exception("User already exists", 409);
         // }
         $identity = $this->generateFakeIdentity($data['email']);
+
         return $this->userRepository->createUser([
             'email' => $data['email'],
             'first_name' => $identity['first_name'],
@@ -46,6 +46,7 @@ class UserService
     {
         $response = json_decode(file_get_contents('https://randomuser.me/api/'), true);
         $user = $response['results'][0];
+
         return [
             'first_name' => $user['name']['first'],
             'last_name' => $user['name']['last'],
@@ -57,6 +58,7 @@ class UserService
     public function assignRole($email, $role)
     {
         $user = $this->userRepository->getUserByEmail($email);
+
         return $this->userRepository->updateUserRole($user, $role);
     }
 }

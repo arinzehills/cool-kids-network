@@ -4,16 +4,14 @@ namespace Tests\Unit\Controllers;
 
 namespace Tests\Unit\Controllers;
 
-use Tests\TestCase;
-use App\Services\UserService;
-use App\Http\Requests\SignupRequest;
-use App\Http\Requests\LoginRequest;
-use Mockery;
-use Mockery\MockInterface;
-use Mockery\LegacyMockInterface;
-use Tymon\JWTAuth\Facades\JWTAuth;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
+use App\Http\Requests\LoginRequest;
+use App\Services\UserService;
+use Mockery;
+use Mockery\LegacyMockInterface;
+use Mockery\MockInterface;
+use Tests\TestCase;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthControllerTest extends TestCase
 {
@@ -21,9 +19,10 @@ class AuthControllerTest extends TestCase
      * @var UserService&LegacyMockInterface&MockInterface
      */
     protected $userServiceMock;
+
     protected $authController;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         $this->userServiceMock = Mockery::mock(UserService::class);
@@ -38,7 +37,7 @@ class AuthControllerTest extends TestCase
             'name' => 'John Doe',
             'email' => 'john@example.com',
             'password' => 'secretpassword',
-            'password_confirmation' => 'secretpassword'
+            'password_confirmation' => 'secretpassword',
         ];
 
         // Make a POST request to the register route
@@ -64,7 +63,7 @@ class AuthControllerTest extends TestCase
         // Prepare test data
         $loginData = [
             'email' => 'user@example.com',
-            'password' => 'password'
+            'password' => 'password',
         ];
 
         // Create a mock LoginRequest
@@ -81,7 +80,7 @@ class AuthControllerTest extends TestCase
             ->once()
             ->with([
                 'email' => $loginData['email'],
-                'password' => 'password'
+                'password' => 'password',
             ])
             ->andReturn($mockToken);
 
@@ -102,7 +101,7 @@ class AuthControllerTest extends TestCase
         // Prepare test data
         $loginData = [
             'email' => 'user@example.com',
-            'password' => 'wrongpassword'
+            'password' => 'wrongpassword',
         ];
 
         // Create a mock LoginRequest
@@ -118,7 +117,7 @@ class AuthControllerTest extends TestCase
             ->once()
             ->with([
                 'email' => $loginData['email'],
-                'password' => 'password'
+                'password' => 'password',
             ])
             ->andReturn(false);
 

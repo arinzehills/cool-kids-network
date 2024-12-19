@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     protected $userRepository;
+
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
@@ -34,8 +35,9 @@ class UserController extends Controller
             return response()->json(['message' => 'Access denied'], 403);
         }
 
-        return  $this->successResponse(['users' => $users]);
+        return $this->successResponse(['users' => $users]);
     }
+
     public function updateProfile(UpdateProfileRequest $request)
     {
         $user = auth()->user();

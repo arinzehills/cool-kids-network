@@ -6,7 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class LoginRequest extends FormRequest
 {
-
     public function authorize()
     {
         return true;
@@ -21,6 +20,7 @@ class LoginRequest extends FormRequest
     {
         return true; // Forces JSON response for this request
     }
+
     public function rules()
     {
         return [

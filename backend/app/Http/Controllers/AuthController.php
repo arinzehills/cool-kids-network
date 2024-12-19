@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
 use App\Services\UserService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
@@ -17,15 +15,17 @@ class AuthController extends Controller
     {
         $this->userService = $userService;
     }
+
     public function register(SignupRequest $request)
     {
         try {
             $user = $this->userService->registerUser($request->validated());
+
             return response()->json(['message' => 'User registered successfully', 'data' => $user]);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => "$th->getMessage()",
-                'error' => true
+                'error' => true,
             ], 400);
         }
     }
@@ -33,7 +33,7 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         $token = JWTAuth::attempt(['email' => $request->only('email'), 'password' => 'password']);
-        if (!$token) {
+        if (! $token) {
             return $this->unauthorizedResponse('User Record not found, sign up');
         }
         $user = auth()->user();

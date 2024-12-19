@@ -2,13 +2,12 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use App\Services\UserService;
-use App\Http\Requests\RoleUpdateRequest;
 use App\Models\User;
-use Mockery;
+use App\Services\UserService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
+use Mockery;
+use Tests\TestCase;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AdminControllerTest extends TestCase
@@ -16,19 +15,20 @@ class AdminControllerTest extends TestCase
     use RefreshDatabase;
 
     protected $userServiceMock;
+
     protected $token;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
         $user = User::factory()->create([
             'first_name' => 'Admin',
             'last_name' => 'aUser',
-            'country' =>  'Nigeria',
+            'country' => 'Nigeria',
             'email' => 'admin@example.com',
             'password' => Hash::make('password'),
-            "role" => User::ROLE_MAINTAINER
+            'role' => User::ROLE_MAINTAINER,
         ]);
         $this->token = JWTAuth::fromUser($user);
         $this->userServiceMock = Mockery::mock(UserService::class);
@@ -46,7 +46,6 @@ class AdminControllerTest extends TestCase
             ->assertJsonValidationErrors(['email', 'role']);
     }
 
-
     public function it_assigns_a_role_successfully_with_jwt_authorization()
     {
         $payload = [
@@ -60,10 +59,8 @@ class AdminControllerTest extends TestCase
             ->with($payload['email'], $payload['role'])
             ->andReturnTrue();
 
-
-        $response = $this->withHeader('Authorization', 'Bearer ' . $this->token)
+        $response = $this->withHeader('Authorization', 'Bearer '.$this->token)
             ->postJson('/api/admin/assign-role', $payload);
-
 
         $response->assertStatus(200)
             ->assertJson([
@@ -82,13 +79,11 @@ class AdminControllerTest extends TestCase
 
         $response = $this->postJson('/api/admin/assign-role', $payload);
 
-
         $response->assertStatus(401)
             ->assertJson([
                 'message' => 'Unauthenticated.',
             ]);
     }
-
 
     protected function tearDown(): void
     {

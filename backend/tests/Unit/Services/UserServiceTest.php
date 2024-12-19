@@ -3,12 +3,13 @@
 namespace Tests\Unit\Services;
 
 use App\Models\User;
-use Tests\TestCase;
-use App\Services\UserService;
 use App\Repositories\UserRepository;
-use Mockery;
+use App\Services\UserService;
 use Illuminate\Support\Facades\Hash;
+use Mockery;
 use Mockery\MockInterface;
+use Tests\TestCase;
+
 // use Mockery\LegacyMockInterface;
 
 class UserServiceTest extends TestCase
@@ -20,7 +21,7 @@ class UserServiceTest extends TestCase
 
     protected $userService;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -98,7 +99,7 @@ class UserServiceTest extends TestCase
         $email = 'john@example.com';
         $role = User::ROLE_MAINTAINER;
 
-        $user = new User();
+        $user = new User;
         $user->email = $email;
         $user->role = User::ROLE_COOLEST_KID;
 
@@ -121,7 +122,6 @@ class UserServiceTest extends TestCase
         // Assert
         $this->assertEquals($role, $result->role);
     }
-
 
     protected function tearDown(): void
     {

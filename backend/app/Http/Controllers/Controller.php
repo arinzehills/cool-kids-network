@@ -11,6 +11,7 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
     protected function successResponse($data = null, $message = 'Success', $statusCode = 200): JsonResponse
     {
         return response()->json([
@@ -29,12 +30,10 @@ class Controller extends BaseController
         ], $statusCode);
     }
 
-
     protected function notFoundResponse($message = 'Resource not found'): JsonResponse
     {
         return $this->errorResponse($message, 404);
     }
-
 
     protected function forbiddenResponse($message = 'Forbidden'): JsonResponse
     {
