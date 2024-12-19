@@ -24,9 +24,10 @@ jobs:
         with:
           php-version: "8.2"
 
-      - name: Install Composer dependencies
-        run: composer install --no-interaction --prefer-dist --optimize-autoloader
-
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          composer install
       - name: Set up the environment for testing
         run: |
           cp .env.testing .env
