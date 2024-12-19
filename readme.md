@@ -42,7 +42,7 @@ Character Generation: randomuser.me API
 
     Laravel Test and React Test passes for both front end and backend
 
-  <img src="./screenshots/linttest.png" alt="Login Screen" height="400">
+  <img src="./screenshots/linttest.png" alt="Login Screen" height="300">
 
 ## Installation
 
