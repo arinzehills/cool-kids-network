@@ -24,16 +24,20 @@ jobs:
         with:
           php-version: "8.2"
 
-      - name: Install backend dependencies
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Set up the environment for testing
         run: |
-          cd backend
-          composer install
+          cp .env.testing .env
+          php artisan key:generate
+          php artisan migrate
+
+      - name: Run Laravel tests
+        run: vendor/bin/phpunit
 
       # - name: Run backend linter (Pint)
       #   run: cd backend && ./vendor/bin/pint
-
-      - name: Run backend tests (PHPUnit)
-        run: cd backend && ./vendor/bin/phpunit
 
   # Frontend job
   frontend:
