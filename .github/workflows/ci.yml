@@ -30,7 +30,8 @@ jobs:
           composer install
       - name: Set up the environment for testing
         run: |
-          cp .env.testing .env
+          cp backend/.env.testing backend/.env
+          cd backend
           php artisan key:generate
           php artisan migrate
 
