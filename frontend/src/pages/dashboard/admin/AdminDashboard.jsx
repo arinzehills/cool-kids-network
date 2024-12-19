@@ -6,13 +6,11 @@ import Button from "../../../components/Button/Button";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { useGet } from "../../../hooks/useGet";
 import RecentSignings from "./RecentSignings";
+import { Link } from "react-router-dom";
 
 const AdminDashboard = () => {
   const [user, setUser] = useLocalStorage("user", "");
 
-  const { data, loading, error } = useGet(
-    `/api/admin/getAnalytics?token=${user.token}`
-  );
   const cards = [
     {
       icon: {
@@ -20,7 +18,7 @@ const AdminDashboard = () => {
         gradient: "rgba(255, 153, 0, 0.5)",
       },
       name: "Total No Users",
-      value: loading ? "0" : data?.totalUsers,
+      value: "32",
       percentage: 70,
     },
     {
@@ -38,7 +36,8 @@ const AdminDashboard = () => {
         gradient: "rgba(51, 204, 153, 0.5)",
       },
       name: "Number of other Mainteners or admins",
-      value: loading ? "0" : data?.ordersToday,
+      value: "32",
+
       percentage: 90,
     },
     {
@@ -47,7 +46,8 @@ const AdminDashboard = () => {
         gradient: "rgba(51, 204, 153, 0.5)",
       },
       name: "Number of other Mainteners or admins",
-      value: loading ? "0" : data?.ordersToday,
+      value: "2",
+
       percentage: 90,
     },
   ];
@@ -65,9 +65,11 @@ const AdminDashboard = () => {
           </div>
         </div>
         <div>
-          <Button isCircular buttonColor="btn-orange" type="submit">
-            {"Assign Role"}
-          </Button>
+          <Link to={"/dashboard/users"}>
+            <Button isCircular buttonColor="btn-orange" type="submit">
+              {"Assign Role"}
+            </Button>
+          </Link>
         </div>
       </div>
       <RecentSignings />

@@ -11,9 +11,6 @@ import CharacterList from "../components/CharacterList";
 const Dashboard = () => {
   const [user, setUser] = useLocalStorage("user", "");
 
-  const { data, loading, error } = useGet(
-    `/api/admin/getAnalytics?token=${user.token}`
-  );
   const cards = [
     {
       icon: {
@@ -21,7 +18,7 @@ const Dashboard = () => {
         gradient: "rgba(255, 153, 0, 0.5)",
       },
       name: "Total No Players",
-      value: loading ? "0" : data?.totalUsers,
+      value: "32",
       percentage: 70,
     },
 
@@ -31,7 +28,7 @@ const Dashboard = () => {
         gradient: "rgba(255, 102, 102, 0.5)",
       },
       name: "Number of cool kids",
-      value: loading ? "0" : data?.totalSpentOnCourses,
+      value: "32",
 
       percentage: 30,
     },
@@ -42,7 +39,7 @@ const Dashboard = () => {
       },
       name: "Number of cooler kids",
 
-      value: loading ? "0" : data?.ordersToday,
+      value: "32",
       percentage: 90,
     },
     {
@@ -51,12 +48,11 @@ const Dashboard = () => {
         gradient: "rgba(51, 204, 153, 0.5)",
       },
       name: "Number of coolest kids",
-
-      value: loading ? "0" : data?.ordersToday,
+      value: "ds",
       percentage: 90,
     },
   ];
-  console.log("cd", user?.role);
+
   return (
     <div className="container mx-auto bg-black">
       <div className="flex flex-wrap lg:flex-nowrap">

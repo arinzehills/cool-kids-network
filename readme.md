@@ -38,6 +38,12 @@ API: RESTful API
 Database: MySQL or SQLite
 Character Generation: randomuser.me API
 
+## Checks on CI/CD
+
+    Laravel Test and React Test passes for both front end and backend
+
+  <img src="./screenshots/linttest.png" alt="Login Screen" height="400">
+
 ## Installation
 
 Prerequisites
