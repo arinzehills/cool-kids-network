@@ -36,7 +36,7 @@ jobs:
           php artisan migrate
 
       - name: Run Laravel tests
-        run: vendor/bin/phpunit
+        run: cd backend && vendor/bin/phpunit
 
       # - name: Run backend linter (Pint)
       #   run: cd backend && ./vendor/bin/pint
