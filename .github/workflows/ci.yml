@@ -35,11 +35,11 @@ jobs:
           php artisan key:generate
           php artisan migrate
 
+      - name: Run backend linter (Pint)
+        run: cd backend && ./vendor/bin/pint
+
       - name: Run Laravel tests
         run: cd backend && vendor/bin/phpunit
-
-      # - name: Run backend linter (Pint)
-      #   run: cd backend && ./vendor/bin/pint
 
   # Frontend job
   frontend:
